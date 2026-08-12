@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class ModaVetor {
+
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        int[] vetor = new int[10];
+
+        System.out.println("Digite os números do vetor:");
+
+        for (int i = 0; i < vetor.length; i++) {
+            System.out.print("Digite o " + (i + 1) + "º número: ");
+            vetor[i] = sc.nextInt();
+        }
+
+        int resultado = moda(vetor);
+
+        if (resultado == Integer.MIN_VALUE) {
+            System.out.println("Não existe moda.");
+        } else {
+            System.out.println("A moda é: " + resultado);
+        }
+    }
+
+    public static int moda(int[] vetor) {
+
+        int maiorFrequencia = 0;
+        int moda = 0;
+        boolean empate = false;
+
+        for (int i = 0; i < vetor.length; i++) {
+
+            int contador = 0;
+
+            for (int j = 0; j < vetor.length; j++) {
+
+                if (vetor[i] == vetor[j]) {
+                    contador++;
+                }
+            }
+
+            if (contador > maiorFrequencia) {
+
+                maiorFrequencia = contador;
+                moda = vetor[i];
+                empate = false;
+
+            } else if (contador == maiorFrequencia && vetor[i] != moda) {
+
+                empate = true;
+            }
+        }
+
+        if (empate) {
+            return Integer.MIN_VALUE;
+        }
+
+        return moda;
+    }
+}
