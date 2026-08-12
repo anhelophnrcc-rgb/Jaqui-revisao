@@ -1,0 +1,146 @@
+import java.util.Scanner;
+
+public class VetorFuncao {
+
+    static Scanner sc = new Scanner(System.in);
+
+    static int[] vetor = new int[50];
+    static int quantidade = 0;
+
+    public static void main(String[] args) {
+
+        inserir();
+        inserir();
+        inserir();
+
+        removerValor();
+
+        removerPosicao();
+
+        somaParImpar();
+
+        somaEntreIndices();
+
+    }
+
+    //  Inserindo os elementos
+    public static void inserir() {
+
+        if (quantidade < vetor.length) {
+
+            System.out.print("Digite um número: ");
+            int numero = sc.nextInt();
+
+            vetor[quantidade] = numero;
+            quantidade++;
+
+        } else {
+
+            System.out.println("O vetor está cheio!");
+
+        }
+    }
+
+    //  Removendo o elemento  pelo valor
+    public static void removerValor() {
+
+        System.out.print("Digite o valor que deseja remover: ");
+        int numero = sc.nextInt();
+
+        for (int i = 0; i < quantidade; i++) {
+
+            if (vetor[i] == numero) {
+
+                for (int j = i; j < quantidade - 1; j++) {
+
+                    vetor[j] = vetor[j + 1];
+
+                }
+
+                quantidade--;
+
+                System.out.println("Valor removido!");
+                return;
+            }
+        }
+
+        System.out.println("Valor não encontrado.");
+    }
+
+    // Removendo o  elemento pela posição
+    public static void removerPosicao() {
+
+        System.out.print("Digite a posição que deseja remover: ");
+        int posicao = sc.nextInt();
+
+        if (posicao >= 0 && posicao < quantidade) {
+
+            for (int i = posicao; i < quantidade - 1; i++) {
+
+                vetor[i] = vetor[i + 1];
+
+            }
+
+            quantidade--;
+
+            System.out.println("Elemento removido!");
+
+        } else {
+
+            System.out.println("Posição inválida!");
+
+        }
+    }
+
+    // Somando os  elementos pares ou ímpares
+    public static void somaParImpar() {
+
+        System.out.print("Digite 1 para somar pares ou 2 para somar ímpares: ");
+        int opcao = sc.nextInt();
+
+        int soma = 0;
+
+        for (int i = 0; i < quantidade; i++) {
+
+            if (opcao == 1 && vetor[i] % 2 == 0) {
+
+                soma = soma + vetor[i];
+
+            } else if (opcao == 2 && vetor[i] % 2 != 0) {
+
+                soma = soma + vetor[i];
+
+            }
+        }
+
+        System.out.println("Soma = " + soma);
+    }
+
+    //  Somando os elementos entre dois índices
+    public static void somaEntreIndices() {
+
+        System.out.print("Digite o primeiro índice: ");
+        int inicio = sc.nextInt();
+
+        System.out.print("Digite o segundo índice: ");
+        int fim = sc.nextInt();
+
+        if (inicio >= 0 && fim < quantidade && inicio <= fim) {
+
+            int soma = 0;
+
+            for (int i = inicio; i <= fim; i++) {
+
+                soma = soma + vetor[i];
+
+            }
+
+            System.out.println("Soma entre os índices = " + soma);
+
+        } else {
+
+            System.out.println("Índices inválidos!");
+
+        }
+    }
+}
