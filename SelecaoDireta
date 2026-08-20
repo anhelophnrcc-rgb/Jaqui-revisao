@@ -1,0 +1,39 @@
+public class SelecaoDireta {
+
+    public static void main(String[] args) {
+        int[] numeros = {25, 57, 48, 37, 12, 86, 33};
+
+        System.out.println("Números desordenados: ");
+        imprimirVetor(numeros);
+        System.out.println();
+
+        int num = numeros.length;
+
+        for (int i = 0; i < num - 1; i++) {
+            int menorIndice = i;
+
+            for (int j = i + 1; j < num; j++) {
+                if (numeros[j] < numeros[menorIndice]) {
+                    menorIndice = j;
+                }
+            }
+
+            int troca = numeros[i];
+            numeros[i] = numeros[menorIndice];
+            numeros[menorIndice] = troca;
+
+            System.out.print("Passada " + (i + 1) + ": ");
+            imprimirVetor(numeros);
+        }
+
+        System.out.println("Números ordenados: ");
+        imprimirVetor(numeros);
+    }
+
+    public static void imprimirVetor(int[] vetor) {
+        for (int numero : vetor) {
+            System.out.print(numero + " ");
+        }
+        System.out.println();
+    }
+}
