@@ -1,0 +1,36 @@
+public class InsercaoDireta {
+
+    public static void main(String[] args) {
+        int[] numeros = {25, 57, 48, 37, 12, 86, 33};
+
+        System.out.println("Números Desordenados");
+        imprimirVetor(numeros);
+        System.out.println();
+
+        int num = numeros.length;
+
+        for (int i = 1; i < num; i++) {
+            int valorAtual = numeros[i];
+            int j;
+
+            for (j = i - 1; j >= 0 && numeros[j] > valorAtual; j--) {
+                numeros[j + 1] = numeros[j];
+            }
+
+            numeros[j + 1] = valorAtual;
+
+            System.out.print("Passada " + i + ": ");
+            imprimirVetor(numeros);
+        }
+
+        System.out.println("Números Ordenados");
+        imprimirVetor(numeros);
+    }
+
+    public static void imprimirVetor(int[] vetor) {
+        for (int numero : vetor) {
+            System.out.print(numero + " ");
+        }
+        System.out.println();
+    }
+}
